@@ -169,9 +169,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        GetData getData = new GetData();
-//        getData.execute();
-
 
     }
 
