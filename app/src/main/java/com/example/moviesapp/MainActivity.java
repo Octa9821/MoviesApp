@@ -183,11 +183,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.now_playing_button:
+                Toast.makeText(this, "Now Playing Button Tapped", Toast.LENGTH_SHORT).show();
+                openNowPlayingMoviesActivity();
+                return true;
             case R.id.to_watch_button:
-                Toast.makeText(this, "To Watch Button Tapped.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "To Watch Button Tapped", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.watched_button:
-                Toast.makeText(this, "Watched Button Tapped.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Watched Button Tapped", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -211,5 +215,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewUpcoming.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewUpcoming.setAdapter(myAdapter);
     }
+
+    public void openNowPlayingMoviesActivity(){
+        Intent intent = new Intent(this, NowPlayingMoviesActivity.class);
+        startActivity(intent);
+    }
+
 
 }

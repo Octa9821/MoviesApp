@@ -18,4 +18,7 @@
     <string name="watched_list">Watched List</string>
     <string name="search_button">Search Button</string>
     <string name="to_watch_list">To Watch List</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="now_playing_title_text">Movies in Cinemas now:</string>
+    <string name="google_map_key">AIzaSyAQ7xCLzK9R8QSXwnWge23Cfx4DXIrXDH4</string>
 </resources>

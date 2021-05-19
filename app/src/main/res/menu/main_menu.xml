@@ -16,5 +16,12 @@
         android:visible="true"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/now_playing_button"
+        android:icon="@drawable/ic_now_playing"
+        android:title="@string/now_playing"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
 
 </menu>

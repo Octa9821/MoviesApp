@@ -42,7 +42,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 openRecommendedActivity(id, title);
             }
         });
-
     }
 
     public void openRecommendedActivity(String id, String title){
