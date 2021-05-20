@@ -75,7 +75,7 @@ public class CinemaFinderActivity extends AppCompatActivity {
             //If permission is denied
             ActivityCompat.requestPermissions(CinemaFinderActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
         }
-        
+
 
         btFind.setOnClickListener(new View.OnClickListener() {
             @Override
