@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.moviesapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,10 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoviesApp">
+        <activity android:name=".ForgotPasswordActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_map_key"/>
+            android:value="@string/google_map_key" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -30,8 +33,12 @@
         <activity android:name=".MovieDetailsActivity" />
         <activity android:name=".RecommendedMoviesActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".NowPlayingMoviesActivity"/>
+        <activity android:name=".NowPlayingMoviesActivity" />
         <activity android:name=".CinemaFinderActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoggedInMainActivity" />
+        <activity android:name=".AccountInfoActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_gray">
+
+    <TextView
+        android:id="@+id/your_profile_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_profile"
+        android:textSize="28sp"
+        android:textColor="@color/bumblebee_yellow"
+        android:fontFamily="@font/fira_sans_bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/name_account_info_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/your_profile_txt"
+        android:text="@string/name_account_info"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:textSize="16dp"
+        android:textColor="@color/bumblebee_yellow"
+        android:fontFamily="@font/fira_sans_medium"/>
+
+    <TextView
+        android:id="@+id/name_from_db_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_account_info_txt"
+        android:text="@string/full_name_hint"
+        android:layout_marginStart="16dp"
+        android:textSize="14dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/fira_sans"/>
+
+    <TextView
+        android:id="@+id/email_account_info_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_from_db_txt"
+        android:text="@string/name_account_info"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:textSize="16dp"
+        android:textColor="@color/bumblebee_yellow"
+        android:fontFamily="@font/fira_sans_medium"/>
+
+    <TextView
+        android:id="@+id/email_from_db"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_account_info_txt"
+        android:text="@string/email_hint"
+        android:layout_marginStart="16dp"
+        android:textSize="14dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/fira_sans"/>
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/bumblebee_yellow"
+        android:textColor="@color/dark_gray"
+        android:text="@string/log_out"
+        android:fontFamily="@font/fira_sans_bold"
+        android:textSize="20sp"
+        android:padding="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"/>
+
+</RelativeLayout>

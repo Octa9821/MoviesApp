@@ -16,9 +16,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +38,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class LoggedInMainActivity extends AppCompatActivity {
 
 
     //TODO Add a search function in the Action Bar, or below it if too difficult. ADDED.
-    //TODO Add a Watched List and a To Watch List (Needs Database)
-    //TODO Add Now Playing list and Google Maps implementation for Cinemas.
+    //TODO Add a Watched List and a To Watch List (Needs Database). Quite Difficult.
+    //TODO Add Now Playing list and Google Maps implementation for Cinemas. ADDED.
 
-//    private static String JSON_POPULAR_URL = "https://api.themoviedb.org/3/movie/popular?api_key=b46c711d586cb64dadb67448afdb0919";
-//    private static String JSON_TOPRATED_URL = "https://api.themoviedb.org/3/movie/top_rated?api_key=b46c711d586cb64dadb67448afdb0919";
-//    private static String JSON_UPCOMING_URL = "https://api.themoviedb.org/3/movie/upcoming?api_key=b46c711d586cb64dadb67448afdb0919";
 
     List<Movie> popularList;
     List<Movie> topratedList;
@@ -50,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
     EditText searchEditText;
     FloatingActionButton searchButton;
 
+    //firebase variables
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(false);
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#FCE205\">" + getString(R.string.app_name) + "</font>"));
         getSupportActionBar().setIcon(R.drawable.ic_logo_all_yellow);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_logged_in);
 
         popularList = new ArrayList<Movie>();
         topratedList = new ArrayList<Movie>();
@@ -68,6 +78,28 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewUpcoming = findViewById(R.id.recyclerViewUpcoming);
         searchEditText = findViewById(R.id.search_edit_text);
         searchButton = findViewById(R.id.search_button);
+        final TextView welcomeText = findViewById(R.id.welcome_user_text);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = user.getUid();
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if(userProfile != null){
+                    String fullName = userProfile.fullName;
+                    welcomeText.setText("Welcome, " + fullName + "!");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 //        OkHttpClient.Builder builder = new OkHttpClient.Builder();
 //
@@ -84,10 +116,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 searchEditText.clearFocus();
                 if(searchEditText.getText().toString().trim().length() <= 0) {
-                    Toast.makeText(MainActivity.this, "Please enter something to search for first.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoggedInMainActivity.this, "Please enter something to search for first.", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                    Intent intent = new Intent(LoggedInMainActivity.this, SearchActivity.class);
                     intent.putExtra("search_text", searchEditText.getText().toString());
                     searchEditText.setText("");
                     startActivity(intent);
@@ -117,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetMovieResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error onFailure: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoggedInMainActivity.this, "Error onFailure: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -144,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetMovieResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error onFailure: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoggedInMainActivity.this, "Error onFailure: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -170,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetMovieResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error onFailure: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoggedInMainActivity.this, "Error onFailure: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -199,11 +231,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Watched Button Tapped", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.login_button:
-                Toast.makeText(this, "Log In Button Tapped", Toast.LENGTH_SHORT).show();
-                openLoginActivity();
+                Toast.makeText(this, "You are already logged in", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.account_info:
-                Toast.makeText(this, "You are not logged in", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoggedInMainActivity.this, AccountInfoActivity.class);
+                startActivity(intent);
+                Toast.makeText(this, "Account Info Button Tapped", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

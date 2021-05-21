@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movies App</string>
+    <string name="app_name">sMovies</string>
     <string name="popular">Popular</string>
     <string name="most_popular_movies">Most popular movies</string>
     <string name="error_fetch_movies">Please check your internet connection</string>
@@ -21,4 +21,22 @@
     <string name="now_playing">Now Playing</string>
     <string name="now_playing_title_text">Movies in Cinemas now:</string>
     <string name="google_map_key">AIzaSyAQ7xCLzK9R8QSXwnWge23Cfx4DXIrXDH4</string>
+    <string name="account_info">Account Info</string>
+    <string name="login">Log in</string>
+    <string name="motto">✦ Your personal movie collection ✦</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register">Register</string>
+    <string name="registration_motto">✎ New User Registration Form ✎</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="register_user">Register User</string>
+    <string name="welcome_user">Welcome, Octavian!</string>
+    <string name="your_profile">Your profile:</string>
+    <string name="name_account_info">Name: </string>
+    <string name="email_account_info">Email Address:</string>
+    <string name="log_out">Log Out</string>
+    <string name="forgot_password_motto">Hmm.. Seems like somebody forgot their password.</string>
+    <string name="enter_email">Enter your email..</string>
+    <string name="reset_password">Reset Password</string>
 </resources>
