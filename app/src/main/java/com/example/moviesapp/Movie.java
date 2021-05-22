@@ -8,22 +8,32 @@ public class Movie {
     @SerializedName("vote_average")
     private String rating;
     @SerializedName("overview")
-    private String description;
+    private String overview;
     @SerializedName("poster_path")
-    private String image;
+    private String posterPath;
     @SerializedName("backdrop_path")
-    private String backdrop;
+    private String backdropPath;
     @SerializedName("release_date")
     private String releaseDate;
     @SerializedName("id")
-    private String id;
+    private String movieID;
 
-    public String getId() {
-        return id;
+    private String movieDbID;
+
+    public String getMovieDbID() {
+        return movieDbID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMovieDbID(String movieDbID) {
+        this.movieDbID = movieDbID;
+    }
+
+    public String getMovieID() {
+        return movieID;
+    }
+
+    public void setMovieID(String movieID) {
+        this.movieID = movieID;
     }
 
     public String getTitle() {
@@ -42,16 +52,16 @@ public class Movie {
         return rating;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOverview() {
+        return overview;
     }
 
-    public String getImage() {
-        return image;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public String getBackdrop() {
-        return backdrop;
+    public String getBackdropPath() {
+        return backdropPath;
     }
 
     public void setTitle(String title) {
@@ -62,15 +72,15 @@ public class Movie {
         this.rating = rating;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
-    public void setBackdrop(String backdrop) {
-        this.backdrop = backdrop;
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
 }

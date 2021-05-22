@@ -1,6 +1,5 @@
 package com.example.moviesapp;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,12 +16,12 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapterWatchList extends RecyclerView.Adapter<MyAdapterWatchList.MyViewHolder> {
 
     private Context mContext;
     private List<Movie> mData;
 
-    public MyAdapter(Context mContext, List<Movie> mData) {
+    public MyAdapterWatchList(Context mContext, List<Movie> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -37,9 +36,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return new MyViewHolder(v);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyAdapterWatchList.MyViewHolder holder, int position) {
         holder.id.setText("Rating: " + mData.get(position).getRating() +" ★");
         holder.name.setText(mData.get(position).getTitle());
         holder.description.setText(mData.get(position).getOverview());
@@ -53,7 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(mContext, mData.get(position).getTitle() + " clicked.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, MovieDetailsActivity.class);
+                Intent intent = new Intent(mContext, MovieDetailsOnListActivity.class);
                 intent.putExtra("movie_poster", mData.get(position).getPosterPath());
                 intent.putExtra("movie_backdrop", mData.get(position).getBackdropPath());
                 intent.putExtra("movie_title", mData.get(position).getTitle());
@@ -61,10 +59,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("movie_overview", mData.get(position).getOverview());
                 intent.putExtra("movie_release_date", mData.get(position).getReleaseDate());
                 intent.putExtra("movie_id", mData.get(position).getMovieID());
+                intent.putExtra("movieDbID",mData.get(position).getMovieDbID()); // TODO see if this works
                 mContext.startActivity(intent);
             }
         });
     }
+
 
 
     @Override

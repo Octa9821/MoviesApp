@@ -39,4 +39,5 @@
     <string name="forgot_password_motto">Hmm.. Seems like somebody forgot their password.</string>
     <string name="enter_email">Enter your email..</string>
     <string name="reset_password">Reset Password</string>
+    <string name="watch_list_activity_title">Movies that you are planning to watch:</string>
 </resources>

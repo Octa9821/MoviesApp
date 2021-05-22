@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,12 +14,26 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-
+// TODO Create 2 Activities for To Watch List and Watched List. Add ability to display data from Firebase into these activities.
+// TODO Create separate MovieDetails Activities, one for Logged In, another for Not Logged In, to prevent App Crash when fetching Logged In User ID
+// TODO Implement Add To Watched List Button Function.
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
     Button recommendedButton;
+
+    //Database test variables
+    ImageButton toWatchButton;
+    DatabaseReference toWatchRef, toWatchListRef;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    ListMovie lMovie;
+    FirebaseAuth mFirebaseAuth;
+    //Database test variables
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +41,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
 
         getIncomingIntent();
+
+        toWatchButton = findViewById(R.id.add_to_watch_icon);
 
         recommendedButton = findViewById(R.id.recommended_button);
         recommendedButton.setOnClickListener(new View.OnClickListener() {
@@ -37,11 +54,63 @@ public class MovieDetailsActivity extends AppCompatActivity {
                     id = getIntent().getStringExtra("movie_id");
                     title = getIntent().getStringExtra("movie_title");
                 } else {
-                    Toast.makeText(MovieDetailsActivity.this, "Error. Couldn't fetch Movie ID.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MovieDetailsActivity.this, "Error. Couldn't fetch Movie ID.", Toast.LENGTH_LONG).show();
                 }
                 openRecommendedActivity(id, title);
             }
         });
+
+
+        //Database Test Code
+        //Check if there is anyone logged in
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        if(mFirebaseUser != null){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String currentUserID = user.getUid();
+            lMovie = new ListMovie();
+            toWatchRef = database.getReference("towatch");  //for checking whether movie is saved or not
+            toWatchListRef = database.getReference("towatchList").child(currentUserID);  //for storing the checked movies
+
+            toWatchButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        if(getIntent().hasExtra("movie_id")){
+                            lMovie.setMovieID(getIntent().getStringExtra("movie_id"));
+                            lMovie.setTitle(getIntent().getStringExtra("movie_title"));
+                            lMovie.setOverview(getIntent().getStringExtra("movie_overview"));
+                            lMovie.setRating(getIntent().getStringExtra("movie_rating"));
+                            lMovie.setPosterPath(getIntent().getStringExtra("movie_poster"));
+                            lMovie.setBackdropPath(getIntent().getStringExtra("movie_backdrop"));
+                            lMovie.setReleaseDate(getIntent().getStringExtra("movie_release_date"));
+                            lMovie.setUserID(currentUserID);
+                        } else {
+                            Toast.makeText(MovieDetailsActivity.this, "Error. Couldn't fetch movie details.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                    String toWatchID = toWatchListRef.push().getKey();
+                        lMovie.setMovieDbID(toWatchID);
+                        toWatchButton.setImageResource(R.drawable.ic_heart_60);
+                    Toast.makeText(MovieDetailsActivity.this, lMovie.title + " added to Watch List", Toast.LENGTH_SHORT).show();
+                    toWatchListRef.child(toWatchID).setValue(lMovie);
+
+                }
+            });
+        } else {
+            Toast.makeText(this, "You are not logged in", Toast.LENGTH_SHORT).show();
+            toWatchButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MovieDetailsActivity.this, "You have to log in to use this functionality", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        //Database Test Code
+
+
+
     }
 
     public void openRecommendedActivity(String id, String title){

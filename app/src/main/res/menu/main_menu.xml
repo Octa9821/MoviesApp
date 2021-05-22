@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/watched_button"
+        android:id="@+id/go_to_watched_list_button"
         android:icon="@drawable/ic_list_watched"
         android:title="@string/watched_list"
         android:visible="true"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/to_watch_button"
+        android:id="@+id/go_to_watch_list_button"
         android:icon="@drawable/ic_list_to_watch"
         android:title="@string/to_watch_list"
         android:visible="true"

@@ -12,10 +12,10 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/movie_backdrop"
+            android:id="@+id/movie_backdrop_on_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/backdrop_guideline"
+            app:layout_constraintBottom_toBottomOf="@+id/backdrop_guideline_on_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,18 +23,18 @@
             android:scaleType="centerCrop"/>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/movie_poster_card"
+            android:id="@+id/movie_poster_card_on_list"
             android:layout_width="128dp"
             android:layout_height="172dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
             app:cardCornerRadius="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/backdrop_guideline"
+            app:layout_constraintBottom_toBottomOf="@+id/backdrop_guideline_on_list"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backdrop_guideline">
+            app:layout_constraintTop_toBottomOf="@id/backdrop_guideline_on_list">
 
             <ImageView
-                android:id="@+id/movie_poster"
+                android:id="@+id/movie_poster_on_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:srcCompat="@tools:sample/avatars"
@@ -43,14 +43,14 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/backdrop_guideline"
+            android:id="@+id/backdrop_guideline_on_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.4" />
 
         <TextView
-            android:id="@+id/movie_title"
+            android:id="@+id/movie_title_on_list"
             android:text="@string/movie_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -61,29 +61,29 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/movie_poster_card"
-            app:layout_constraintTop_toBottomOf="@+id/backdrop_guideline" />
+            app:layout_constraintStart_toEndOf="@+id/movie_poster_card_on_list"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_guideline_on_list" />
 
         <TextView
-            android:id="@+id/movie_release_date"
+            android:id="@+id/movie_release_date_on_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/light_gray"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/movie_title"
-            app:layout_constraintTop_toBottomOf="@+id/movie_title"
+            app:layout_constraintStart_toStartOf="@+id/movie_title_on_list"
+            app:layout_constraintTop_toBottomOf="@+id/movie_title_on_list"
             android:text="@string/release_date" />
 
         <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/movie_poster_title_barrier"
+            android:id="@+id/movie_poster_title_barrier_on_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="movie_rating,movie_release_date"
+            app:constraint_referenced_ids="movie_rating_on_list,movie_release_date_on_list"
             tools:layout_editor_absoluteY="452dp" />
 
         <TextView
-            android:id="@+id/movie_overview"
+            android:id="@+id/movie_overview_on_list"
             android:text="@string/movie_description"
             android:layout_width="match_parent"
             android:textColor="@color/light_gray"
@@ -93,43 +93,43 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movie_poster_title_barrier" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_poster_title_barrier_on_list" />
 
         <TextView
-            android:id="@+id/movie_rating"
+            android:id="@+id/movie_rating_on_list"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="@+id/movie_poster_card"
-            app:layout_constraintStart_toStartOf="@+id/movie_poster_card"
-            app:layout_constraintTop_toBottomOf="@+id/movie_poster_card"
+            app:layout_constraintEnd_toEndOf="@+id/movie_poster_card_on_list"
+            app:layout_constraintStart_toStartOf="@+id/movie_poster_card_on_list"
+            app:layout_constraintTop_toBottomOf="@+id/movie_poster_card_on_list"
             android:text="Rating"
             android:textColor="@color/bumblebee_yellow"/>
 
         <Button
-            android:id="@+id/recommended_button"
+            android:id="@+id/recommended_button_on_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="236dp"
             android:layout_marginEnd="64dp"
             android:text="Get Recommended"
-            app:layout_constraintBottom_toTopOf="@+id/backdrop_guideline"
+            app:layout_constraintBottom_toTopOf="@+id/backdrop_guideline_on_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/movie_poster_card"
+            app:layout_constraintStart_toEndOf="@+id/movie_poster_card_on_list"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             android:layout_marginStart="15dp"
             android:textColor="@color/bumblebee_yellow"/>
 
         <ImageButton
-            android:id="@+id/add_to_watch_icon"
+            android:id="@+id/delete_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_heart_outline_60"
+            android:src="@drawable/ic_delete_60"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:backgroundTint="@color/transparent"/>

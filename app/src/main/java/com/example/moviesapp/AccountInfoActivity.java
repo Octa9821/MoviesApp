@@ -64,7 +64,7 @@ public class AccountInfoActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AccountInfoActivity.this, "Something wrong happened.", Toast.LENGTH_LONG).show();
+                Toast.makeText(AccountInfoActivity.this, "Something wrong happened", Toast.LENGTH_LONG).show();
             }
         });
     }

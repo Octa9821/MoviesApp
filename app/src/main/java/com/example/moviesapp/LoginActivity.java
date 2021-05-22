@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Register Text Pressed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(LoginActivity.this, "Register Text Pressed", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
@@ -61,10 +61,11 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Big Login Button Pressed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(LoginActivity.this, "Big Login Button Pressed", Toast.LENGTH_SHORT).show();
                 userLogin();
             }
         });
+
     }
 
 //    @Override

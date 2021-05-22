@@ -66,8 +66,8 @@ public class NowPlayingMoviesActivity extends AppCompatActivity {
         directionsFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(NowPlayingMoviesActivity.this, "Directions Button Clicked", Toast.LENGTH_SHORT).show();
-                openCinemaFinderActivity();
+                //Toast.makeText(NowPlayingMoviesActivity.this, "Directions Button Clicked", Toast.LENGTH_SHORT).show();
+                openCinemaFinderActivity();  //TODO maybe autosearch for cinemas
             }
         });
     }

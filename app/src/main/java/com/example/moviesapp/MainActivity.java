@@ -33,9 +33,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
 
-    //TODO Add a search function in the Action Bar, or below it if too difficult. ADDED.
-    //TODO Add a Watched List and a To Watch List (Needs Database)
-    //TODO Add Now Playing list and Google Maps implementation for Cinemas.
 
 //    private static String JSON_POPULAR_URL = "https://api.themoviedb.org/3/movie/popular?api_key=b46c711d586cb64dadb67448afdb0919";
 //    private static String JSON_TOPRATED_URL = "https://api.themoviedb.org/3/movie/top_rated?api_key=b46c711d586cb64dadb67448afdb0919";
@@ -189,17 +186,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.now_playing_button:
-                Toast.makeText(this, "Now Playing Button Tapped", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Now Playing Button Tapped", Toast.LENGTH_SHORT).show();
                 openNowPlayingMoviesActivity();
                 return true;
-            case R.id.to_watch_button:
-                Toast.makeText(this, "To Watch Button Tapped", Toast.LENGTH_SHORT).show();
+            case R.id.go_to_watch_list_button:
+                //Toast.makeText(this, "You need to login to see your Watch List.", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.watched_button:
-                Toast.makeText(this, "Watched Button Tapped", Toast.LENGTH_SHORT).show();
+            case R.id.go_to_watched_list_button:
+                //Toast.makeText(this, "Watched Button Tapped", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.login_button:
-                Toast.makeText(this, "Log In Button Tapped", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Log In Button Tapped", Toast.LENGTH_SHORT).show();
                 openLoginActivity();
                 return true;
             case R.id.account_info:
