@@ -29,7 +29,4 @@ public interface TmdbAPI {
     @GET("now_playing?api_key=b46c711d586cb64dadb67448afdb0919")
     Call<GetMovieResponse> getMoviesNowPlaying();
 
-//    @Headers("api-key: " + "PUT_YOUR_API_KEY")
-//    @GET("android/jsonandroid")
-//    Call<JSONResponse> getJSON();
 }

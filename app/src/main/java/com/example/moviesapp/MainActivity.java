@@ -38,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
 //    private static String JSON_TOPRATED_URL = "https://api.themoviedb.org/3/movie/top_rated?api_key=b46c711d586cb64dadb67448afdb0919";
 //    private static String JSON_UPCOMING_URL = "https://api.themoviedb.org/3/movie/upcoming?api_key=b46c711d586cb64dadb67448afdb0919";
 
-    List<Movie> popularList;
-    List<Movie> topratedList;
-    List<Movie> upcomingList;
-    RecyclerView recyclerViewPopular;
-    RecyclerView recyclerViewTopRated;
-    RecyclerView recyclerViewUpcoming;
-    EditText searchEditText;
-    FloatingActionButton searchButton;
+    private List<Movie> popularList;
+    private List<Movie> topratedList;
+    private List<Movie> upcomingList;
+    private RecyclerView recyclerViewPopular;
+    private RecyclerView recyclerViewTopRated;
+    private RecyclerView recyclerViewUpcoming;
+    private EditText searchEditText;
+    private FloatingActionButton searchButton;
 
 
     @Override
@@ -66,15 +66,6 @@ public class MainActivity extends AppCompatActivity {
         searchEditText = findViewById(R.id.search_edit_text);
         searchButton = findViewById(R.id.search_button);
 
-//        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-//
-//        builder.addInterceptor(new Interceptor() {
-//            @Override
-//            public okhttp3.Response intercept(Chain chain) throws IOException {
-//                Request request = chain.request().newBuilder().addHeader("api-key", "b46c711d586cb64dadb67448afdb0919").build();
-//                return chain.proceed(request);
-//            }
-//        });
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
