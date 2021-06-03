@@ -19,21 +19,22 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-// TODO Create 2 Activities for To Watch List and Watched List. Add ability to display data from Firebase into these activities.
-// TODO Create separate MovieDetails Activities, one for Logged In, another for Not Logged In, to prevent App Crash when fetching Logged In User ID
-// TODO Implement Add To Watched List Button Function.
+// TODO Create Activity for To Watch List. Add ability to display data from Firebase into these activities.  DONE
+// TODO Create separate MovieDetails Activities, one for Logged In, another for Not Logged In, to prevent App Crash when fetching Logged In User ID  DONE
+// TODO Implement Add To Watch List Button Function.  DONE
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
     Button recommendedButton;
 
-    //Database test variables
+    //Database variables
     ImageButton toWatchButton;
-    DatabaseReference toWatchRef, toWatchListRef;
+//    DatabaseReference toWatchRef;
+    DatabaseReference    toWatchListRef;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     ListMovie lMovie;
     FirebaseAuth mFirebaseAuth;
-    //Database test variables
+    //Database variables
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,17 +61,15 @@ public class MovieDetailsActivity extends AppCompatActivity {
             }
         });
 
-
-        //Database Test Code
-        //Check if there is anyone logged in
+        //Checking if there is anyone logged in
         mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
         if(mFirebaseUser != null){
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String currentUserID = user.getUid();
             lMovie = new ListMovie();
-            toWatchRef = database.getReference("towatch");  //for checking whether movie is saved or not
-            toWatchListRef = database.getReference("towatchList").child(currentUserID);  //for storing the checked movies
+            //toWatchRef = database.getReference("towatch");
+            toWatchListRef = database.getReference("towatchList").child(currentUserID);  //for storing the checked movies in root based on user's ID
 
             toWatchButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,11 +105,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 }
             });
         }
-
-        //Database Test Code
-
-
-
     }
 
     public void openRecommendedActivity(String id, String title){

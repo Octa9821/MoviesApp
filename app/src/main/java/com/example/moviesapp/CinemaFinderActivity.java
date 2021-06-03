@@ -85,9 +85,9 @@ public class CinemaFinderActivity extends AppCompatActivity {
                 //Initialize URL
                 String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" + //url
                 "?location=" + currentLat + "," + currentLong + //location latitude and longitude
-                "&radius=12000" + //nearby radius
+                "&radius=15000" + //nearby radius
                 "&types=" + placeTypeList[i] + //place type
-                "&sensor=true" + // sensor
+//                "&sensor=true" + // sensor
                 "&key=" + getResources().getString(R.string.google_map_key); //Maps Key
 
                 //Executing place task method to download the json data
