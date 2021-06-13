@@ -40,4 +40,6 @@
     <string name="enter_email">Enter your email..</string>
     <string name="reset_password">Reset Password</string>
     <string name="watch_list_activity_title">Movies that you are planning to watch:</string>
+    <string name="find_text">FIND</string>
+    <string name="to_find_cinemas">To find nearby cinemas press: </string>
 </resources>

@@ -229,9 +229,9 @@ public class LoggedInMainActivity extends AppCompatActivity {
                 Intent intentWatchList = new Intent(LoggedInMainActivity.this, ToWatchListActivity.class);
                 startActivity(intentWatchList);
                 return true;
-            case R.id.go_to_watched_list_button:
+//            case R.id.go_to_watched_list_button:
                 //Toast.makeText(this, "Watched Button Tapped", Toast.LENGTH_SHORT).show();
-                return true;
+//                return true;
             case R.id.login_button:
                 Toast.makeText(this, "You are already logged in", Toast.LENGTH_SHORT).show();
                 return true;

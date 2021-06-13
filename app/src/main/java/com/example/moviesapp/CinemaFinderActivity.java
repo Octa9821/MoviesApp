@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -56,7 +57,10 @@ public class CinemaFinderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cinema_finder);
 
+        getSupportActionBar().hide();
+
         spType = findViewById(R.id.sp_type);
+        spType.setVisibility(View.GONE);
         btFind = findViewById(R.id.bt_find);
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
 

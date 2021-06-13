@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private FirebaseAuth mAuth;
     private Button registerUserButton;
-    private EditText editTextFullName, editTextAge, editTextEmail, editTextPassword;
+    private EditText editTextFullName, editTextEmail, editTextPassword;
     private ProgressBar progressBar;
 
     @Override

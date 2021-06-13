@@ -181,11 +181,11 @@ public class MainActivity extends AppCompatActivity {
                 openNowPlayingMoviesActivity();
                 return true;
             case R.id.go_to_watch_list_button:
-                //Toast.makeText(this, "You need to login to see your Watch List.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You need to login to see your Watch List.", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.go_to_watched_list_button:
+//            case R.id.go_to_watched_list_button:
                 //Toast.makeText(this, "Watched Button Tapped", Toast.LENGTH_SHORT).show();
-                return true;
+//                return true;
             case R.id.login_button:
                 //Toast.makeText(this, "Log In Button Tapped", Toast.LENGTH_SHORT).show();
                 openLoginActivity();

@@ -43,6 +43,7 @@ public class ToWatchListActivity extends AppCompatActivity {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                movieList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Movie movie = dataSnapshot.getValue(Movie.class);
                     movieList.add(movie);
@@ -57,4 +58,39 @@ public class ToWatchListActivity extends AppCompatActivity {
             }
         });
     }
+
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        setContentView(R.layout.activity_to_watch_list);
+//
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//        String currentUserID = currentUser.getUid();
+//        recyclerViewToWatch = findViewById(R.id.recyclerViewWatchList);
+//        database = FirebaseDatabase.getInstance().getReference("towatchList/" + currentUserID);
+//        recyclerViewToWatch.setHasFixedSize(true);
+//        recyclerViewToWatch.setLayoutManager(new LinearLayoutManager(this));
+//
+//        movieList = new ArrayList<>();
+//        myAdapterWatchList = new MyAdapterWatchList(this,movieList);
+//        recyclerViewToWatch.setAdapter(myAdapterWatchList);
+//
+//        database.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                    Movie movie = dataSnapshot.getValue(Movie.class);
+//                    movieList.add(movie);
+//                }
+//
+//                myAdapterWatchList.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 }

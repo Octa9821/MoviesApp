@@ -15,7 +15,7 @@
         app:cardCornerRadius="10dp">
 
         <RelativeLayout
-            android:layout_width="270dp"
+            android:layout_width="260dp"
             android:layout_height="match_parent">
 
             <TextView
@@ -57,7 +57,7 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="281dp"
+            android:layout_marginStart="270dp"
             tools:srcCompat="@tools:sample/avatars"
             android:cropToPadding="true"
             android:scaleType="fitXY" />

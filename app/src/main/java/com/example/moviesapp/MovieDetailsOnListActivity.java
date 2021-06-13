@@ -3,6 +3,7 @@ package com.example.moviesapp;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -87,7 +88,15 @@ public class MovieDetailsOnListActivity extends AppCompatActivity {
                         Toast.makeText(MovieDetailsOnListActivity.this, movieTitle + " was not deleted", Toast.LENGTH_SHORT).show();
                     }
                 });
-        builder.create().show();
+//        builder.create().show();
+
+        AlertDialog dialogue = builder.create();
+        dialogue.show();
+        Button buttonNo = dialogue.getButton(DialogInterface.BUTTON_NEGATIVE);
+        Button buttonYes = dialogue.getButton(DialogInterface.BUTTON_POSITIVE);
+        buttonNo.setTextColor(getResources().getColor(R.color.bumblebee_yellow));
+        buttonYes.setTextColor(getResources().getColor(R.color.bumblebee_yellow));
+
     }
 
     private void deleteMovie(String currentUserID, String currentMovieID) {
